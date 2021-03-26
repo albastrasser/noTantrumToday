@@ -8,7 +8,7 @@ import { fetchMessages } from '../store';
 class MessagesList extends Component {
   constructor() {
     super();
-    this.state = { messages: [] };
+    // this.state = { messages: [] };
   }
 
   async componentDidMount() {
@@ -20,7 +20,7 @@ class MessagesList extends Component {
 
   render() {
     const channelId = Number(this.props.match.params.channelId); // because it's a string "1", not a number!
-    const messages = this.state.messages;
+    const messages = this.props.messages;
     const filteredMessages = messages.filter(
       (message) => message.channelId === channelId
     );
@@ -32,7 +32,7 @@ class MessagesList extends Component {
             <Message message={message} key={message.id} />
           ))}
         </ul>
-        <NewMessageEntry />
+        <NewMessageEntry channelId={channelId} />
       </div>
     );
   }
