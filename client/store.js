@@ -7,6 +7,7 @@ import socket from './socket';
 const GOT_MESSAGES_FROM_SERVER = 'GOT_MESSAGES_FROM_SERVER';
 const WRITE_MESSAGE = 'WRITE_MESSAGE';
 const GOT_NEW_MESSAGE_FROM_SERVER = 'GOT_NEW_MESSAGE_FROM_SERVER';
+const CURRENT_AUTHOR = 'CURRENT_AUTHOR';
 
 //action creator:
 export const gotMessagesFromServer = (messages) => {
@@ -27,6 +28,13 @@ export const writeMessage = (inputContent) => {
   return {
     type: WRITE_MESSAGE,
     newMessageEntry: inputContent,
+  };
+};
+
+export const authorName = (name) => {
+  return {
+    type: CURRENT_AUTHOR,
+    nameEntry: name,
   };
 };
 
@@ -61,6 +69,7 @@ export const postNewMessage = (newMessage) => {
 let initialState = {
   messages: [],
   newMessageEntry: '',
+  nameEntry: '',
 };
 
 //reducer function:
@@ -72,6 +81,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, messages: [...state.messages, action.newMessage] };
     case WRITE_MESSAGE:
       return { ...state, newMessageEntry: action.newMessageEntry };
+    case CURRENT_AUTHOR:
+      return { ...state, nameEntry: action.nameEntry };
     default:
       return state;
   }
