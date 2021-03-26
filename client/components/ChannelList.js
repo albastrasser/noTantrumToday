@@ -11,6 +11,12 @@ const LUNCH_CHANNEL = '/channels/4';
 
 class ChannelList extends Component {
   render() {
+    // console.log(
+    //   'PROPS',
+    //   this.props.messages.filter((message) => {
+    //     return message.channelId === 1;
+    //   })
+    // );
     return (
       <ul>
         <li>
@@ -19,7 +25,7 @@ class ChannelList extends Component {
             <span className="badge">
               {
                 this.props.messages.filter((message) => {
-                  return message.channedId === 1;
+                  return message.channelId === 1;
                 }).length
               }
             </span>
