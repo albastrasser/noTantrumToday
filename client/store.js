@@ -8,6 +8,7 @@ const GOT_MESSAGES_FROM_SERVER = 'GOT_MESSAGES_FROM_SERVER';
 const WRITE_MESSAGE = 'WRITE_MESSAGE';
 const GOT_NEW_MESSAGE_FROM_SERVER = 'GOT_NEW_MESSAGE_FROM_SERVER';
 const CURRENT_AUTHOR = 'CURRENT_AUTHOR';
+const RESET = 'RESET';
 
 //action creator:
 export const gotMessagesFromServer = (messages) => {
@@ -37,6 +38,13 @@ export const authorName = (name) => {
     nameEntry: name,
   };
 };
+
+// export const reset = () => {
+//   return {
+//     type: RESET,
+//     state,
+//   };
+// };
 
 //thunk creator:
 export const fetchMessages = () => {
@@ -83,6 +91,7 @@ const reducer = (state = initialState, action) => {
       return { ...state, newMessageEntry: action.newMessageEntry };
     case CURRENT_AUTHOR:
       return { ...state, nameEntry: action.nameEntry };
+
     default:
       return state;
   }

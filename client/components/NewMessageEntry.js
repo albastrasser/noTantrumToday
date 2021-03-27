@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { writeMessage, postNewMessage } from '../store';
+import { writeMessage, postNewMessage, resett } from '../store';
 import { connect } from 'react-redux';
 
 class NewMessageEntry extends Component {
@@ -12,16 +12,21 @@ class NewMessageEntry extends Component {
     this.props.write(event.target.value);
   }
   handleSubmit(event) {
+    // console.log('thisprops', this.props);
     event.preventDefault();
     const content = this.props.newMessageEntry;
     const channelId = this.props.channelId;
-    this.props.post({ content, channelId });
+    const name = this.props.nameEntry;
+    this.props.post({ content, channelId, name });
+    document.getElementById('form').value = '';
   }
   render() {
+    console.log('this---->>', this.props);
     return (
       <form id="new-message-form" onSubmit={this.handleSubmit}>
         <div className="input-group input-group-lg">
           <input
+            id="form"
             className="form-control"
             type="text"
             name="content"
@@ -40,8 +45,10 @@ class NewMessageEntry extends Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log('state->>', state);
   return {
     newMessageEntry: state.newMessageEntry,
+    nameEntry: state.nameEntry,
   };
 };
 

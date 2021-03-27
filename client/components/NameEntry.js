@@ -10,11 +10,12 @@ export class NameEntry extends React.Component {
   }
 
   handleChange(evt) {
-    console.log('handle--', this.props);
+    console.log('handle--', evt.target.value);
     this.props.updateauth(evt.target.value);
   }
 
   render() {
+    console.log('this-->', this.props);
     return (
       <form className="form-inline">
         <label htmlFor="name">Your name:</label>
@@ -29,12 +30,12 @@ export class NameEntry extends React.Component {
     );
   }
 }
+// const mapStateToProps = () => {
 
+// }
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateauth: (name) => {
-      dispatch(authorName(name));
-    },
+    updateauth: (name) => dispatch(authorName(name)),
   };
 };
 
