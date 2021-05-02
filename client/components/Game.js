@@ -3,16 +3,10 @@ import React from 'react';
 import MessagesList from './MessagesList';
 import { updateTextNodeThunk } from '../store';
 import { connect } from 'react-redux';
-import { Container, Row, Col } from 'react-bootstrap';
-// let initState = {
-//   textNodeIndex: 0,
-//   textNode: textNodes[0],
-// };
 
 class Game extends React.Component {
   constructor() {
     super();
-    // this.state = initState;
     this.startGame = this.startGame.bind(this);
     this.showTextNode = this.showTextNode.bind(this);
     this.selectOption = this.selectOption.bind(this);
