@@ -35,6 +35,12 @@ body {
 nav img {
   width: 100vw;
 }
+
+nav h3 {
+  font-family: 'New Tegomin', serif;
+  text-align: center;
+  font-weight: bold;
+}
 #AppChat {
   border: 1px solid #ccc;
   border-radius: 3px;
