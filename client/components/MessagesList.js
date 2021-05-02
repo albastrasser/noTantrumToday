@@ -10,29 +10,28 @@ class MessagesList extends Component {
     super();
     // this.state = { messages: [] };
   }
-
-  async componentDidMount() {
-    // const response = await axios.get('/api/messages');
-    // const messages = response.data;
-    // this.setState({ messages });
-    this.props.fetchInitialMessages();
+  componentDidUpdate() {
+    this.node.scrollTop = this.node.scrollHeight;
   }
 
-  render() {
-    const channelId = Number(this.props.match.params.channelId); // because it's a string "1", not a number!
-    const messages = this.props.messages;
-    const filteredMessages = messages.filter(
-      (message) => message.channelId === channelId
-    );
+  // async componentDidMount() {
+  // const response = await axios.get('/api/messages');
+  // const messages = response.data;
+  // this.setState({ messages });
+  // this.props.fetchInitialMessages();
+  // }
 
+  render() {
+    const messages = this.props.messages;
+    console.log(messages);
     return (
-      <div>
-        <ul className="media-list">
-          {filteredMessages.map((message) => (
-            <Message message={message} key={message.id} />
+      <div id="AppChat">
+        <ul id="MessageList" ref={(node) => (this.node = node)}>
+          {messages.map((message, i) => (
+            <Message message={message} key={i} />
           ))}
         </ul>
-        <NewMessageEntry channelId={channelId} />
+        <NewMessageEntry />
       </div>
     );
   }

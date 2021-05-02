@@ -10,7 +10,6 @@ export class NameEntry extends React.Component {
   }
 
   handleChange(evt) {
-    console.log('handle--', evt.target.value);
     this.props.updateauth(evt.target.value);
   }
 

@@ -8,6 +8,7 @@ const GOT_MESSAGES_FROM_SERVER = 'GOT_MESSAGES_FROM_SERVER';
 const WRITE_MESSAGE = 'WRITE_MESSAGE';
 const GOT_NEW_MESSAGE_FROM_SERVER = 'GOT_NEW_MESSAGE_FROM_SERVER';
 const CURRENT_AUTHOR = 'CURRENT_AUTHOR';
+const TEXT_NODE = 'TEXT_NODE';
 const RESET = 'RESET';
 
 //action creator:
@@ -32,6 +33,13 @@ export const writeMessage = (inputContent) => {
   };
 };
 
+export const updateTextNode = (textNode) => {
+  return {
+    type: TEXT_NODE,
+    textNode,
+  };
+};
+
 export const authorName = (name) => {
   return {
     type: CURRENT_AUTHOR,
@@ -47,26 +55,36 @@ export const authorName = (name) => {
 // };
 
 //thunk creator:
-export const fetchMessages = () => {
-  //thunk:
-  return async (dispatch) => {
+// export const fetchMessages = () => {
+//   //thunk:
+//   return async (dispatch) => {
+//     try {
+//       const response = await axios.get('/api/messages');
+//       const messages = response.data;
+//       // console.log('messagges---', messages);
+//       dispatch(gotMessagesFromServer(messages));
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
+
+export const postNewMessage = (newMessage) => {
+  return (dispatch) => {
     try {
-      const response = await axios.get('/api/messages');
-      const messages = response.data;
-      // console.log('messagges---', messages);
-      dispatch(gotMessagesFromServer(messages));
+      dispatch(gotNewMessageFromServer({ name: 'You', content: newMessage }));
+      socket.emit('new-message', newMessage);
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export const postNewMessage = (newMessage) => {
-  return async (dispatch) => {
+export const updateTextNodeThunk = (textNode) => {
+  return (dispatch) => {
     try {
-      const { data } = await axios.post('/api/messages', newMessage);
-      dispatch(gotNewMessageFromServer(data));
-      socket.emit('new-message', data);
+      dispatch(updateTextNode(textNode));
+      socket.emit('new-node', textNode);
     } catch (error) {
       console.log(error);
     }
@@ -78,6 +96,7 @@ let initialState = {
   messages: [],
   newMessageEntry: '',
   nameEntry: '',
+  textNode: {},
 };
 
 //reducer function:
@@ -91,6 +110,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, newMessageEntry: action.newMessageEntry };
     case CURRENT_AUTHOR:
       return { ...state, nameEntry: action.nameEntry };
+    case TEXT_NODE:
+      return { ...state, textNode: action.textNode };
 
     default:
       return state;

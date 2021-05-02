@@ -8,6 +8,7 @@ class NewMessageEntry extends Component {
     this.changeHandler = this.changeHandler.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   changeHandler(event) {
     this.props.write(event.target.value);
   }
@@ -15,29 +16,30 @@ class NewMessageEntry extends Component {
     // console.log('thisprops', this.props);
     event.preventDefault();
     const content = this.props.newMessageEntry;
-    const channelId = this.props.channelId;
-    const name = this.props.nameEntry;
-    this.props.post({ content, channelId, name });
+    // const name = this.props.nameEntry;
+    // this.props.post({ content, name });
+    this.props.post(content);
     document.getElementById('form').value = '';
   }
   render() {
-    console.log('this---->>', this.props);
     return (
-      <form id="new-message-form" onSubmit={this.handleSubmit}>
-        <div className="input-group input-group-lg">
+      <form className="MessageForm" onSubmit={this.handleSubmit}>
+        <div className="input-container">
           <input
             id="form"
-            className="form-control"
             type="text"
+            autoComplete="off"
             name="content"
-            placeholder="Say something nice..."
+            ref={(node) => (this.input = node)}
+            placeholder="What should you do..."
             onChange={this.changeHandler}
           />
-          <span className="input-group-btn">
-            <button className="btn btn-default" type="submit">
-              Chat!
-            </button>
-          </span>
+        </div>
+
+        <div className="button-container">
+          <button type="submit" className="btn btn-light">
+            Chat!
+          </button>
         </div>
       </form>
     );

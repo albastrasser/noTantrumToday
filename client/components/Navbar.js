@@ -5,8 +5,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav>
-        <h3># channelname goes here</h3>
-        <NameEntry />
+        <img className={'title'} src="/annastitle.png" />
       </nav>
     );
   }

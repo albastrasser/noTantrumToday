@@ -1,23 +1,144 @@
-/* global */
+global body {
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
 
 body {
-  height: 100vh;
+  background-image: url('/annasbg.png');
+  background-size: 100vw 100vh;
 }
 
-#app {
+/* #app {
   height: 100%;
+} */
+
+.flex {
+  padding: 20px;
+  flex-direction: row;
+  text-align: center;
+  display: flex;
+  text-decoration: none;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-#app > div {
+.flexbaby {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  flex-basis: 40%;
+  flex-direction: column;
+  align-content: space-between;
+}
+nav img {
+  width: 100vw;
+}
+#AppChat {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  height: 400px;
+  width: 300px;
+  margin: 0.5em;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.gametext {
+  height: 400px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#AppChat #MessageList {
+  box-sizing: border-box;
+  flex: 1;
+  text-align: left;
+}
+
+#MessageList {
+  overflow-y: auto;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.Message {
+  line-height: 1.5em;
+}
+
+.Message .author {
+  font-weight: bold;
+  margin: 0 5px 0 0;
+}
+
+#AppChat .MessageForm {
+  border-top: 1px solid #ccc;
+  border-radius: 0 0 3px 3px;
+  box-sizing: border-box;
+  flex: 0 0 30px;
+}
+
+.MessageForm {
+  display: flex;
+  background: #ccc;
+}
+
+.MessageForm .input-container {
+  flex: 1;
+  margin: 1px;
+}
+
+.MessageForm .button-container {
+  flex: 0 0 6em;
+  margin: 1px 1px 1px 0;
+}
+
+.MessageForm input,
+.MessageForm button {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: inherit;
+  height: 100%;
+  outline: none;
+  width: 100%;
+}
+
+.MessageForm input {
+  padding: 0 0 0 4px;
+}
+
+.gametext {
+  font-family: 'New Tegomin', serif;
+  font-size: 20px;
+}
+/* #app > div {
   height: 100%;
   display: flex;
-}
+} */
 
+/* nav {
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  align-items: center;
+  padding-bottom: 25px;
+} */
+/* nav .title {
+  width: 100%;
+    padding-bottom: 25px;
+} */
 /* sidebar */
-
+/*
 .sidebar {
-  background-color: #2B303B;
-  color: #AFB1B6;
+  background-color: #2b303b;
+  color: #afb1b6;
   z-index: 2;
 }
 
@@ -58,7 +179,7 @@ body {
 }
 
 .sidebar ul li a {
-  color: #AFB1B6;
+  color: #afb1b6;
   padding-left: 16px;
   padding-top: 3px;
   display: list-item;
@@ -66,15 +187,16 @@ body {
   width: 100%;
 }
 
-.sidebar ul li a:hover, .sidebar ul li a:focus {
-  color: #AFB1B6;
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  color: #afb1b6;
   background-color: #303641;
   text-decoration: none;
 }
 
 .sidebar ul li a.active {
-  background-color: #5294E2;
-  color: #D4D5D8;
+  background-color: #5294e2;
+  color: #d4d5d8;
   border-radius: 0 5px 5px 0;
 }
 
@@ -84,65 +206,86 @@ body {
 
 /* nav */
 
-nav {
-  position: fixed;
-  height: 53px;
-  width: 100%;
-  background-color: white;
-  z-index: 1;
-  border-bottom: 1px solid gray;
-  display: flex;
-  align-items: center;
-}
-
-nav h3 {
+/* nav h3 {
   margin: 0 0 0 240px;
   flex: 1 1 auto;
 }
 
 nav form {
   margin: 0 10px 0 0;
-}
+} */
 
 /* main */
 
-main {
+/* main {
   margin: 78px 25px 25px 25px;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-}
+} */
 
-main .media-list {
+/* main .media-list {
   overflow-y: scroll;
   flex: 1 1 auto;
-}
+} */
 
-main .media img {
+/* main .media img {
   height: 64px;
   width: 64px;
-}
+} */
 
-main .media-object {
+/* main .media-object {
   border-radius: 5px;
-}
-
+} */
+/*
 main > div {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-}
+} */
 
 /* message form */
-
+/*
 #new-message-form {
   position: relative;
-}
+} */
 
-#new-message-form .form-control {
+/* #new-message-form .form-control {
   border-width: 3px 1.5px 3px 3px;
-}
+} */
 
-#new-message-form.btn {
+/* #new-message-form.btn {
   border-width: 3px;
-}
+} */
+
+/* From the web guy */
+
+/* #message-container {
+  width: 50%;
+  max-width: 1200px;
+  background-color: #ccc;
+  padding: 5px;
+} */
+
+/* #message-container div {
+  background-color: #ccc;
+  padding: 5px;
+} */
+
+/* #message-container div:nth-child(2n) {
+  background-color: #fff;
+} */
+
+/* #send-container {
+  position: fixed;
+  padding-bottom: 30px;
+  bottom: 0;
+  background-color: white;
+  max-width: 1200px;
+  width: 80%;
+  display: flex;
+} */
+/*
+#message-input {
+  flex-grow: 1;
+} */
