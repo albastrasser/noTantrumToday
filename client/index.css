@@ -7,6 +7,8 @@ global body {
 body {
   background-image: url('/annasbg.png');
   background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 /* #app {
@@ -60,7 +62,9 @@ nav h3 {
   flex-direction: column;
   text-align: center;
 }
-
+#AppChat {
+  background: rgba(240, 240, 240, 0.5);
+}
 #AppChat #MessageList {
   box-sizing: border-box;
   flex: 1;
